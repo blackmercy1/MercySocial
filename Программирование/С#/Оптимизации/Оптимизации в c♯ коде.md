@@ -1,0 +1,1 @@
+[[Hash string optimization]]
