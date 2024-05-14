@@ -8,19 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4a059e1916dae747",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Программирование/Data base/Основные операции с базами данных CRUD.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e7033cbae74100e1",
+            "id": "0b74caf676a1b623",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,19 +20,43 @@
             }
           },
           {
-            "id": "0b74caf676a1b623",
+            "id": "cfdaf5d5a8523a6c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Async/Await вопросы собеседование.md",
+                "file": "Lambda vs Delegate.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "afb30807537dd52b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Event vs Delegate.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ebfa0ce80f702256",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Static class vs Singletone.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -73,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "clone",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,8 +102,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -111,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Async/Await вопросы собеседование.md",
+                "file": "Lambda vs Delegate.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Async/Await вопросы собеседование.md",
+                "file": "Lambda vs Delegate.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Async/Await вопросы собеседование.md"
+                "file": "Lambda vs Delegate.md"
               }
             }
           }
@@ -172,14 +183,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0e9ff4001b3643f5",
+  "active": "cfdaf5d5a8523a6c",
   "lastOpenFiles": [
     "Программирование/Собеседование/Вопросы/Вопросы.md",
-    "Async/Await вопросы собеседование.md",
-    "Async",
-    "Программирование/Собеседование/Собеседование.md",
-    "Программирование/Программирование.md",
+    "Lambda vs Delegate.md",
+    "Event vs Delegate.md",
+    "Static class vs Singletone.md",
+    "Чем опасна реализация Singletone в многопоточной среде.md",
     "Программирование/Data base/Основные операции с базами данных CRUD.md",
+    "Abstract class vs Interface.md",
+    "Cache/Screenshot 2024-05-14 at 00.26.48.png",
+    "Программирование/Собеседование/Собеседование.md",
+    "Async/Await вопросы собеседование.md",
+    "README.md",
+    "Async",
+    "Программирование/Программирование.md",
     "Программирование/Собеседование/Вопросы",
     "Программирование/Собеседование",
     "Программирование/Docker/Docker.md",
@@ -206,13 +224,7 @@
     "Программирование/Книги/Конспект по книгам",
     "Программирование/Книги/Книги для прочтения",
     "Программирование/Книги/Книги для прочтения/Книги для прочтения.md",
-    "Программирование/Книги/Названия книг/Implementing Domain-Driven Design.md",
-    "Программирование/С#/ASP net core/ASP Net Core.md",
-    "Программирование/С#/C♯.md",
     "Программирование/Книги/Названия книг",
-    "Программирование/Архитектура/Чистая архектура/Application.md",
-    "Программирование/Подходы/ООП.md",
-    "Программирование/Подходы/Подходы.md",
     "Cache/Screenshot 2024-04-30 at 23.12.06.png",
     "Cache/Pasted image 20240427200440.png",
     "Cache/Pasted image 20240427200410.png",
@@ -220,7 +232,6 @@
     "Cache/Pasted image 20240427114638.png",
     "Cache/Pasted image 20240427114546.png",
     "Cache/Pasted image 20240426231900.png",
-    "Cache/Pasted image 20240426225345.png",
     "Программирование/С#/Оптимизации/Untitled.canvas",
     "Untitled 2.canvas",
     "Untitled 1.canvas",
