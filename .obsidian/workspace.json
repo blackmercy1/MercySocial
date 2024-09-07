@@ -4,22 +4,143 @@
     "type": "split",
     "children": [
       {
-        "id": "b01ea8ae73a7a29a",
+        "id": "403d1b9ee954eb0d",
         "type": "tabs",
         "children": [
           {
-            "id": "9540c745a2f833a3",
+            "id": "7ebad6ad569565d6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Программирование/C++/Pointers/Unique_ptr.md",
+                "file": "IP-adresses.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "eede63216df1bfee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Default Gateway.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "33851522aa6b1b96",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Gateway.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ff8c6bb5d29db02c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Default Gateway.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "92fdd12695b1313e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "NAT.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "263f72fe9d0d7d82",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Локальная сеть IP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b713109a01429f52",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IPv4.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "501479619382c095",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Локальная сеть IP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "da7b2340130f55a2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IPv6.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7a212ea45fbb5bac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IPv4.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8da3ff99c6f4afe7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Динамический IP адрес.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -69,7 +190,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 369.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "981ab20591b6b062",
@@ -85,7 +207,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Программирование/C++/Pointers/Unique_ptr.md",
+                "file": "Default Gateway.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +224,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Программирование/C++/Pointers/Unique_ptr.md",
+                "file": "Default Gateway.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +247,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Программирование/C++/Pointers/Unique_ptr.md"
+                "file": "Default Gateway.md"
               }
             }
           }
@@ -133,7 +255,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -145,46 +268,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9540c745a2f833a3",
+  "active": "ff8c6bb5d29db02c",
   "lastOpenFiles": [
-    "Программирование/C++/Pointers/Smart-pointers.md",
-    "Программирование/C++/Pointers/Unique_ptr.md",
-    "Программирование/C++/Виды объектов/Динамические массивы/Динамические массивы.md",
-    "Программирование/Алгоритмы/Алгоритмы.md",
-    "Программирование/Криптография/Алгоритмы/Hash function (хеш-функция).md",
-    "Программирование/C++/Динамическая память",
-    "Программирование/C++/Виды объектов/Динамические объекты/Динамические объекты.md",
-    "Программирование/C++/Виды объектов/Динамические массивы",
-    "Программирование/C++/Виды объектов/Глобальные объекты/Глобальные объекты.md",
-    "Программирование/C++/Виды объектов/Глобальные объекты",
-    "Программирование/C++/Виды объектов",
-    "Программирование/C++/Виды объектов/Динамические объекты",
-    "Divide and rule.md",
-    "Программирование/C++/Pointers",
-    "Программирование/C++",
-    "Программирование/Криптография/Алгоритмы/Алгоритмы.md",
-    "Программирование/Паттерны/EventBus.md",
-    "Программирование/Криптография/Алгоритмы",
-    "Программирование/Криптография",
-    "CLR.md",
-    "Программирование/CLR via CSharp Link Edition.md",
-    "Программирование/Паттерны",
-    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Полиморфизм.md",
-    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/Параметрический полиморфизм.md",
-    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/ad-hoc полиморфизм.md",
-    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/Полиморфизм подтипов.md",
-    "Программирование/Шейдеры/Графическое API.md",
-    "Видео драйвер.md",
-    "Как видеокарта обрабатывает изображение.md",
-    "Программирование/Шейдеры/Шейдеры.md",
-    "Программирование/CSharp Architecture.canvas",
-    "Программирование/CLR via CSharp.md",
-    "Программирование/Шейдеры/Z Buffer (тест глубины).md",
-    "Программирование/Docker/Docker.md",
-    "Программирование/Шейдеры/Графический конвейр.md",
-    "Cache/Screenshot 2024-06-10 at 20.09.11.png",
-    "Обучение/Обучение.md",
+    "Gateway.md",
+    "Default Gateway.md",
+    "IP-adresses.md",
+    "NAT.md",
+    "Локальная сеть IP.md",
+    "Частные IP адреса.md",
+    "IPv4.md",
+    "IPv6.md",
+    "Динамический IP адрес.md",
+    "Глобальные IP адреса.md",
     "Программирование/Программирование.md",
+    "Сети.md",
+    "Статический IP адрес.md",
+    "Программирование/Графика/Графика.md",
+    "Программирование/Графика",
+    "Программирование/Data base/Основные операции с базами данных CRUD.md",
+    "CLR.md",
+    "Программирование/C++/C++.md",
+    "Программирование/Брокеры сообщений/RabbitMQ/RabbitMQ.md",
+    "Программирование/Брокеры сообщений/RabbitMQ/Подключение и каналы.md",
+    "Программирование/Брокеры сообщений/RabbitMQ/Exchange/Exchange.md",
+    "Программирование/DDD/Domain Driven Design.md",
+    "Программирование/DDD",
+    "Линейная алгебра/Вектор/Вектор.md",
+    "Обучение/Обучение.md",
+    "Программирование/C++/Виды объектов/Динамические/Динамические объекты/Динамические объекты.md",
+    "Программирование/C++/Виды объектов/Динамические/Динамические массивы/Динамические массивы.md",
+    "Программирование/DDD/Event Sourcing.md",
+    "Программирование/C++/Pointers/Smart-pointers",
+    "Программирование/C++/Виды объектов/Динамические",
+    "Программирование/C++/Виды объектов/Глобальные",
+    "Программирование/C++/Динамическая память",
+    "Программирование/C++/Виды объектов/Динамические/Динамические массивы",
+    "Программирование/C++/Виды объектов/Глобальные/Глобальные объекты",
+    "Программирование/C++/Виды объектов",
+    "Программирование/C++/Виды объектов/Динамические/Динамические объекты",
+    "Программирование/CSharp Architecture.canvas",
+    "Cache/Screenshot 2024-06-10 at 20.09.11.png",
     "Cache/Pasted image 20240602055037.png",
     "Cache/Screenshot 2024-06-02 at 05.47.42.png",
     "Cache/Screenshot 2024-06-02 at 05.46.42.png",
