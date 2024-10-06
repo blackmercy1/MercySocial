@@ -1,5 +1,5 @@
 using AutoMapper;
-using FluentResults;
+using ErrorOr;
 using MercySocial.Application.Common.Service;
 using MercySocial.Domain.common;
 using Microsoft.AspNetCore.Mvc;
@@ -8,17 +8,18 @@ namespace MercySocial.Presentation.Common.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
+public abstract class EntityController<TModel, TDto, TId, TIdType> :
     Controller,
-    IController<TCreateDto, TReadDto, TId>
+    IController<TDto, TId>
     where TModel : Entity<TId> 
-    where TId : notnull
+    where TId : AggregateRootId<TIdType>
+    where TIdType : struct
 {
-    protected readonly IService<TModel, TId> Service;
+    protected readonly IService<TModel, TId, TIdType> Service;
     protected readonly IMapper Mapper;
 
     public EntityController(
-        IService<TModel, TId> service,
+        IService<TModel, TId, TIdType> service,
         IMapper mapper)
     {
         Service = service;
@@ -26,7 +27,7 @@ public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddAsync([FromBody] TCreateDto createDto)
+    public async Task<IActionResult> AddAsync([FromBody] TDto createDto)
     {
         return await ProcessRequestAsync(createDto, async dto =>
         {
@@ -37,7 +38,7 @@ public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] TReadDto createDto)
+    public async Task<IActionResult> Update([FromBody] TDto createDto)
     {
         return await ProcessRequestAsync(createDto, async dto =>
         {
@@ -48,7 +49,7 @@ public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateById([FromBody] TReadDto createDto, TId id)
+    public async Task<IActionResult> UpdateById([FromBody] TDto createDto, TId id)
     {
         return await ProcessRequestAsync(createDto, async dto =>
         {
@@ -58,10 +59,10 @@ public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
         });
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetByIdAsync([FromQuery] TId id)
+    [HttpGet($"{{tId}}")]
+    public async Task<IActionResult> GetByIdAsync([FromRoute] TId tId)
     {
-        return await ProcessRequestAsync(id, async id =>
+        return await ProcessRequestAsync(tId, async id =>
         {
             var result = await Service.GetByIdAsync(id);
             return result;
@@ -69,7 +70,7 @@ public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] TReadDto readDto)
+    public async Task<IActionResult> DeleteAsync([FromBody] TDto readDto)
     {
         return await ProcessRequestAsync(readDto, async dto =>
         {
@@ -79,17 +80,17 @@ public abstract class EntityController<TModel, TCreateDto, TReadDto, TId> :
         });
     }
 
-    protected async Task<IActionResult> ProcessRequestAsync<TDto>(
-        TDto dto,
-        Func<TDto, Task<Result<TModel>>> operation)
+    protected async Task<IActionResult> ProcessRequestAsync<TDtoOperation>(
+        TDtoOperation dto,
+        Func<TDtoOperation, Task<ErrorOr<TModel>>> operation)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
         var result = await operation(dto);
 
-        if (result.IsFailed)
-            return BadRequest(new {result.Errors.FirstOrDefault()?.Message});
+        if (result.IsError)
+            return BadRequest(new {result.Errors.FirstOrDefault().Description});
 
         return Ok(result.Value);
     }

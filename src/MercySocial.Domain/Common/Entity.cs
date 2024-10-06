@@ -1,6 +1,8 @@
 namespace MercySocial.Domain.common;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
+public abstract class Entity<TId> : 
+    IEquatable<Entity<TId>>,
+    IHasDomainEvents
     where TId : notnull
 {
     private readonly List<IDomainEvent> _domainEvents = new();
