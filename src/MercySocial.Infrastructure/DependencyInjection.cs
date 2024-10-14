@@ -1,3 +1,6 @@
+using MercySocial.Application.Common.Users.Repository;
+using MercySocial.Infrastructure.Data;
+using MercySocial.Infrastructure.Users.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -10,12 +13,13 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        
-        // services.AddDbContext<ApplicationDbContext>(options =>
-        // {
-        //     options.UseNpgsql(connectionString);
-        // });
+        services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+        });
+
+        services.AddScoped<IUserRepository, UserRepository>();
+            
         
         return services;
     }

@@ -15,6 +15,5 @@ public class UserController : EntityController<User, UserDto, UserId, int>
         IMapper mapper) : base(
             service,
             mapper)
-    {
-    }
+    { }
 }

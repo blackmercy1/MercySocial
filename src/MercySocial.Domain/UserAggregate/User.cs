@@ -40,4 +40,6 @@ public class User : AggregateRoot<UserId>
     
     public string Bio { get; private set; }
     public bool IsActive { get; private set; }
+
+    private User() { }
 }

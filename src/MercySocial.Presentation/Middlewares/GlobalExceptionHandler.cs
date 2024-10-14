@@ -1,33 +1,12 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace MercySocial.Presentation.Middlewares
-{
-    public class GlobalExceptionHandlerMiddleware : IMiddleware
-    {
-        public GlobalExceptionHandlerMiddleware() { }
-        
-        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
-        {
-            try
-            {
-                await next(context);
-            }
-            catch (Exception ex)
-            {
-                context.Response.ContentType = "application/json";
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+namespace MercySocial.Presentation.Middlewares;
 
-                var result = new { error = ex.Message };
-                await context.Response.WriteAsJsonAsync(result);
-            }
-        }
-    }
-    
-    public class GlobalExceptionHandler : IExceptionHandler
+public class GlobalExceptionHandler : IExceptionHandler
 {
     private readonly IHostEnvironment _env;
     private readonly ILogger<GlobalExceptionHandler> _logger;
@@ -111,5 +90,4 @@ namespace MercySocial.Presentation.Middlewares
 
         return string.Empty;
     }
-}
 }

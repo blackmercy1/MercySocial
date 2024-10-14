@@ -9,7 +9,7 @@ namespace MercySocial.Presentation.Common.Controllers;
 [ApiController]
 [Route("api/[controller]/[action]")]
 public abstract class EntityController<TModel, TDto, TId, TIdType> :
-    Controller,
+    ApiController,
     IController<TDto, TId>
     where TModel : Entity<TId> 
     where TId : AggregateRootId<TIdType>
@@ -27,9 +27,9 @@ public abstract class EntityController<TModel, TDto, TId, TIdType> :
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddAsync([FromBody] TDto createDto)
+    public async Task<IActionResult> AddAsync([FromBody] TDto dto)
     {
-        return await ProcessRequestAsync(createDto, async dto =>
+        return await ProcessRequestAsync(dto, async _ =>
         {
             var entity = Mapper.Map<TModel>(dto);
             var result = await Service.AddAsync(entity);
@@ -37,45 +37,33 @@ public abstract class EntityController<TModel, TDto, TId, TIdType> :
         });
     }
 
-    [HttpPut]
-    public async Task<IActionResult> Update([FromBody] TDto createDto)
+    [HttpPut($"{{id:int}}")]
+    public async Task<IActionResult> UpdateById([FromRoute] TId tId, [FromBody] TDto dto)
     {
-        return await ProcessRequestAsync(createDto, async dto =>
+        return await ProcessRequestAsync(dto, async _ =>
         {
             var entity = Mapper.Map<TModel>(dto);
-            var result = await Service.UpdateAsync(entity);
+            var result = await Service.UpdateByIdAsync(entity, tId);
             return result;
         });
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateById([FromBody] TDto createDto, TId id)
-    {
-        return await ProcessRequestAsync(createDto, async dto =>
-        {
-            var entity = Mapper.Map<TModel>(dto);
-            var result = await Service.UpdateByIdAsync(entity, id);
-            return result;
-        });
-    }
-
-    [HttpGet($"{{tId}}")]
+    [HttpGet($"{{id:int}}")]
     public async Task<IActionResult> GetByIdAsync([FromRoute] TId tId)
     {
-        return await ProcessRequestAsync(tId, async id =>
+        return await ProcessRequestAsync(tId, async _ =>
         {
-            var result = await Service.GetByIdAsync(id);
+            var result = await Service.GetByIdAsync(tId);
             return result;
         });
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] TDto readDto)
+    [HttpDelete($"{{id:int}}")]
+    public async Task<IActionResult> DeleteByIdAsync(TId tId)
     {
-        return await ProcessRequestAsync(readDto, async dto =>
+        return await ProcessRequestAsync(tId, async _ =>
         {
-            var entity = Mapper.Map<TModel>(dto);
-            var result = await Service.DeleteAsync(entity);
+            var result = await Service.DeleteByIdAsync(tId);
             return result;
         });
     }

@@ -26,7 +26,18 @@ public abstract class EntityService<TModel, TId, TIdType> :
             ? Errors.Entity.EntityWasNotFound
             : entity;
     }
-    
+
+    public async Task<ErrorOr<TModel>> DeleteByIdAsync(TId tId)
+    {
+        var existingEntity = await Repository.GetByIdAsync(tId);
+        if (existingEntity is null)
+            return Errors.Entity.EntityWasNotFound;
+
+        await Repository.DeleteAsync(existingEntity);
+
+        return existingEntity;
+    }
+
     public virtual async Task<ErrorOr<TModel>> AddAsync(TModel entity)
     {
         var existingEntity = await Repository.ExistsBy(entity);
@@ -38,36 +49,25 @@ public abstract class EntityService<TModel, TId, TIdType> :
         return addedEntity;
     }
 
-    public virtual async Task<ErrorOr<TModel>> DeleteAsync(TModel entity)
+    public virtual async Task<ErrorOr<bool>> DeleteAsync(TId id)
     {
-        var existingEntity = await Repository.ExistsBy(entity);
-        if (!existingEntity)
+        var existingEntity = await Repository.GetByIdAsync(id);
+        if (existingEntity is null)
             return Errors.Entity.EntityWasNotFound;
 
-        await Repository.DeleteAsync(entity);
+        await Repository.DeleteAsync(existingEntity);
 
-        return Result.Success;
+        return true;
     }
 
     public async Task<ErrorOr<TModel>> UpdateByIdAsync(TModel entity, TId id)
     {
-        var existingEntity = await Repository.ExistsBy(id);
+        var existingEntity = await Repository.GetByIdAsync(id);
         if (existingEntity is null)
-            return Result.Fail<TModel>("DoesNotExists");
+            return Errors.Entity.EntityWasNotFound;
         
         await Repository.UpdateByIdAsync(entity, existingEntity);
 
-        return Result.Ok();
-    }
-
-    public virtual async Task<ErrorOr<TModel>> UpdateAsync(TModel entity)
-    {
-        var existingEntity = await Repository.ExistsBy(entity.Id);
-        if (existingEntity is null)
-            return Result.Fail<TModel>("DoesNotExists");
-        
-        await Repository.UpdateByIdAsync(entity, existingEntity);
-
-        return Result.Ok();
+        return existingEntity;
     }
 }

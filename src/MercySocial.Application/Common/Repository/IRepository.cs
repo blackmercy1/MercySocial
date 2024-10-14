@@ -8,12 +8,11 @@ public interface IRepository<TModel, in TId, in TIdType>
     where TIdType : struct
 {
     Task<TModel?> GetByIdAsync(TId id);
+    Task<bool> ExistsBy(TModel entity);
     
     Task<TModel> AddAsync(TModel entity);
     Task UpdateByIdAsync(TModel entity, TModel existingEntity);
     Task UpdateAsync(TModel entity);
     
     Task DeleteAsync(TModel entity);
-    Task<bool> ExistsBy(TModel entity);
-    Task<TModel?> ExistsBy(TId id);
 }
