@@ -1,19 +1,32 @@
 using AutoMapper;
-using MercySocial.Application.Common.Users;
-using MercySocial.Application.Common.Users.Service;
-using MercySocial.Domain.UserAggregate;
-using MercySocial.Domain.UserAggregate.ValueObjects;
+using MediatR;
+using MercySocial.Application.Users.Commands.CreateUser;
 using MercySocial.Presentation.Common.Controllers;
-using MercySocial.Presentation.Users.Dto;
+using MercySocial.Presentation.Users.Requests;
+using MercySocial.Presentation.Users.Responses;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MercySocial.Presentation.Users.Controllers;
 
-public class UserController : EntityController<User, UserDto, UserId, int>
+public class UserController : ApiController
 {
-    public UserController(
-        IUserService service,
-        IMapper mapper) : base(
-            service,
-            mapper)
-    { }
+    private readonly IMapper _mapper;
+    private readonly ISender _mediator;
+
+    public UserController(IMapper mapper, ISender mediator)
+    {
+        _mapper = mapper;
+        _mediator = mediator;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateUser(CreateUserRequest createUserRequest)
+    {
+        var createUserCommand = _mapper.Map<CreateUserCommand>(createUserRequest);
+        var createUserResult = await _mediator.Send(createUserCommand);
+        
+        return createUserResult.Match(
+            result => Ok(_mapper.Map<UserResponse>(result)),
+            error => Problem(error));
+    }
 }

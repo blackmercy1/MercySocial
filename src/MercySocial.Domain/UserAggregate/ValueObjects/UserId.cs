@@ -2,19 +2,17 @@ using MercySocial.Domain.common;
 
 namespace MercySocial.Domain.UserAggregate.ValueObjects;
 
-public class UserId : AggregateRootId<int>
+public class UserId : AggregateRootId<Guid>
 {
-    public sealed override int Value { get; protected set; }
+    public sealed override Guid Value { get; protected set; }
     
-    public UserId(int value)
-    {
-        Value = value;
-    }
-    
+    private UserId(Guid value) => Value = value;
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
     }
-    
-    private UserId() { }
+
+    public static UserId Create(Guid value) => new(value);
+    public static UserId CreateUniqueUserId() => new(System.Guid.NewGuid());
 }
