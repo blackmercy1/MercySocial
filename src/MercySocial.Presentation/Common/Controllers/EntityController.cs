@@ -1,7 +1,7 @@
 using AutoMapper;
 using ErrorOr;
 using MercySocial.Application.Common.Service;
-using MercySocial.Domain.common;
+using MercySocial.Domain.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MercySocial.Presentation.Common.Controllers;
@@ -73,13 +73,10 @@ public abstract class EntityController<TModel, TDto, TId, TIdType> :
         Func<TDtoOperation, Task<ErrorOr<TModel>>> operation)
     {
         if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+            return ValidationProblem(ModelState);
 
         var result = await operation(dto);
 
-        if (result.IsError)
-            return BadRequest(new {result.Errors.FirstOrDefault().Description});
-
-        return Ok(result.Value);
+        return result.IsError ? Problem(result.Errors) : Ok(result.Value);
     }
 }
