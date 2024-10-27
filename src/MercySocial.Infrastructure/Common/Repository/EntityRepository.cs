@@ -1,5 +1,5 @@
 using MercySocial.Application.Common.Repository;
-using MercySocial.Domain.common;
+using MercySocial.Domain.Common;
 using MercySocial.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,12 +37,6 @@ public abstract class EntityRepository<TModel, TId, TIdType> :
         var addedEntity = await Entities.AddAsync(entity);
         await DbContext.SaveChangesAsync();
         return addedEntity.Entity;
-    }
-
-    public virtual Task UpdateAsync(TModel entity)
-    {
-        Entities.Update(entity);
-        return DbContext.SaveChangesAsync();
     }
 
     public Task UpdateByIdAsync(TModel entity, TModel existingEntity)

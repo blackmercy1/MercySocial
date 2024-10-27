@@ -1,4 +1,4 @@
-namespace MercySocial.Domain.common;
+namespace MercySocial.Domain.Common;
 
 public class AggregateRoot<TId> : Entity<TId>
     where TId : notnull

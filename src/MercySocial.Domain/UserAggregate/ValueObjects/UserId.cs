@@ -1,4 +1,4 @@
-using MercySocial.Domain.common;
+using MercySocial.Domain.Common;
 
 namespace MercySocial.Domain.UserAggregate.ValueObjects;
 

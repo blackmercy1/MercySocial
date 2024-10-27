@@ -1,7 +1,7 @@
 using ErrorOr;
 using MediatR;
 using MercySocial.Application.Users.Repository;
-using MercySocial.Domain.common.Errors;
+using MercySocial.Domain.Common.Errors;
 using MercySocial.Domain.UserAggregate;
 
 namespace MercySocial.Application.Users.Commands.CreateUser;
