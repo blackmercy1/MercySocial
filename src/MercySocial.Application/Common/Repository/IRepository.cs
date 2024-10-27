@@ -1,4 +1,4 @@
-using MercySocial.Domain.common;
+using MercySocial.Domain.Common;
 
 namespace MercySocial.Application.Common.Repository;
 
@@ -12,7 +12,6 @@ public interface IRepository<TModel, in TId, in TIdType>
     
     Task<TModel> AddAsync(TModel entity);
     Task UpdateByIdAsync(TModel entity, TModel existingEntity);
-    Task UpdateAsync(TModel entity);
     
     Task DeleteAsync(TModel entity);
 }

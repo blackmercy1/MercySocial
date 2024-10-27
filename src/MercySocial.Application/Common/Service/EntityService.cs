@@ -1,7 +1,7 @@
 using ErrorOr;
 using MercySocial.Application.Common.Repository;
-using MercySocial.Domain.common;
-using MercySocial.Domain.common.Errors.Entity;
+using MercySocial.Domain.Common;
+using MercySocial.Domain.Common.Errors;
 
 namespace MercySocial.Application.Common.Service;
 

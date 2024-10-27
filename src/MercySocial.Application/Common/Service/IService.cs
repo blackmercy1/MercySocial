@@ -1,5 +1,5 @@
-using MercySocial.Domain.common;
 using ErrorOr;
+using MercySocial.Domain.Common;
 
 namespace MercySocial.Application.Common.Service;
 
