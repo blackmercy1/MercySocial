@@ -10,7 +10,7 @@ public class User : AggregateRoot<UserId>
     public string PasswordHash { get; private set; }
     public string? ProfileImageUrl { get; private set; }
 
-    public DateTime DateOfBirth { get; private set; }
+    public DateTime? DateOfBirth { get; private set; }
     public DateTime? CreatedAt { get; private set; }
     public DateTime? LastLogin { get; private set; }
     public string? Bio { get; private set; }
@@ -22,12 +22,12 @@ public class User : AggregateRoot<UserId>
         string userName,
         string email,
         string passwordHash,
-        string? profileImageUrl,
-        DateTime dateOfBirth,
-        DateTime? createdAt,
-        DateTime? lastLogin,
-        string? bio,
-        bool isActive)
+        bool isActive,
+        string? profileImageUrl = null,
+        string? bio = null,
+        DateTime? lastLogin = null,
+        DateTime? createdAt = null,
+        DateTime? dateOfBirth = null)
         : base(id)
     {
         UserName = userName;
@@ -42,31 +42,30 @@ public class User : AggregateRoot<UserId>
     }
 
     public static User Create(
+        UserId? id,
         string userName,
         string email,
         string passwordHash,
-        string? profileImageUrl,
-        DateTime dateOfBirth,
-        DateTime? createdAt,
-        DateTime? lastLogin,
-        string? bio,
-        bool isActive)
-    {
-        return new(
-            id: UserId.CreateUniqueUserId(),
+        bool isActive,
+        string? profileImageUrl = null,
+        string? bio = null,
+        DateTime? lastLogin = null,
+        DateTime? createdAt = null,
+        DateTime? dateOfBirth = null) => new(
+            id: id ?? UserId.CreateUniqueUserId(),
             userName: userName,
             email: email,
             passwordHash: passwordHash,
+            isActive: isActive,
             profileImageUrl: profileImageUrl,
-            dateOfBirth: dateOfBirth,
-            createdAt: createdAt,
-            lastLogin: lastLogin,
             bio: bio,
-            isActive: isActive
-        );
-    }
+            lastLogin: lastLogin,
+            createdAt: createdAt,
+            dateOfBirth: dateOfBirth);
 
 #pragma warning disable CS8618
-    private User() { }
+    private User()
+    {
+    }
 #pragma warning restore CS8618
 }

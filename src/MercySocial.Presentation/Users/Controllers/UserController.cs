@@ -20,10 +20,12 @@ public class UserController : ApiController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateUser(CreateUserRequest createUserRequest)
+    public async Task<IActionResult> CreateUser(
+        CreateUserRequest createUserRequest,
+        CancellationToken cancellationToken)
     {
         var createUserCommand = _mapper.Map<CreateUserCommand>(createUserRequest);
-        var createUserResult = await _mediator.Send(createUserCommand);
+        var createUserResult = await _mediator.Send(createUserCommand, cancellationToken);
         
         return createUserResult.Match(
             result => Ok(_mapper.Map<UserResponse>(result)),

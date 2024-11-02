@@ -16,9 +16,21 @@ public class UserRepository :
         dbContext)
     { }
 
-    public Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    public Task<UserId?> GetIdByEmailAsync(
+        string email,
+        CancellationToken cancellationToken) 
         => DbContext
             .Set<User>()
             .Where(x => x.Email == email)
+            .Select(x => x.Id)
             .FirstOrDefaultAsync(cancellationToken);
+
+    public async Task<User> AddAsync(
+        User entity,
+        CancellationToken cancellationToken)
+    {
+        var addedEntity = await Entities.AddAsync(entity, cancellationToken);
+        await DbContext.SaveChangesAsync(cancellationToken);
+        return addedEntity.Entity;
+    }
 }

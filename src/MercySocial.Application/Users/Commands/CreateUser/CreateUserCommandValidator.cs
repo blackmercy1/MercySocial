@@ -1,7 +1,9 @@
 using FluentValidation;
+using JetBrains.Annotations;
 
 namespace MercySocial.Application.Users.Commands.CreateUser;
 
+[UsedImplicitly]
 public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 {
     public CreateUserCommandValidator()

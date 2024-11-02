@@ -6,5 +6,6 @@ namespace MercySocial.Application.Users.Repository;
 
 public interface IUserRepository : IRepository<User, UserId, Guid>
 {
-    Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken);
+    Task<UserId?> GetIdByEmailAsync(string email, CancellationToken cancellationToken);
+    Task<User> AddAsync(User entity, CancellationToken cancellationToken);
 }
