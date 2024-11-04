@@ -5,10 +5,10 @@ using MercySocial.Application.Users.Repository;
 using MercySocial.Domain.Common.Errors;
 using MercySocial.Domain.UserAggregate;
 
-namespace MercySocial.Application.Users.Commands.CreateLogin;
+namespace MercySocial.Application.Users.Commands.CreateUserLogin;
 
 [UsedImplicitly]
-public class CreateLoginCommandHandler : IRequestHandler<CreateLoginCommand, ErrorOr<User>>
+public class CreateLoginCommandHandler : IRequestHandler<CreateUserLoginCommand, ErrorOr<User>>
 {
     private readonly IUserRepository _userRepository;
 
@@ -18,7 +18,7 @@ public class CreateLoginCommandHandler : IRequestHandler<CreateLoginCommand, Err
     }
 
     public async Task<ErrorOr<User>> Handle(
-        CreateLoginCommand request,
+        CreateUserLoginCommand request,
         CancellationToken cancellationToken)
     {
         var userId = await _userRepository.GetIdByEmailAsync(

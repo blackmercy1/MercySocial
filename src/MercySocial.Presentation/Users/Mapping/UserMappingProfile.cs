@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using MercySocial.Application.Users.Commands.CreateLogin;
+using MercySocial.Application.Users.Commands.CreateRegisterUser;
 using MercySocial.Application.Users.Commands.CreateUser;
+using MercySocial.Application.Users.Commands.CreateUserLogin;
 using MercySocial.Domain.UserAggregate;
 using MercySocial.Presentation.Users.Requests;
 using MercySocial.Presentation.Users.Responses;
@@ -13,6 +14,7 @@ public class UserMappingProfile : Profile
     {
         CreateMap<CreateUserRequest, CreateUserCommand>();
         CreateMap<User, UserResponse>();
-        CreateMap<CreateLoginRequest, CreateLoginCommand>();
+        CreateMap<CreateUserLoginRequest, CreateUserLoginCommand>();
+        CreateMap<CreateUserRegisterRequest, CreateUserRegisterCommand>();
     }
 }

@@ -1,10 +1,10 @@
 using FluentValidation;
 using JetBrains.Annotations;
 
-namespace MercySocial.Application.Users.Commands.CreateLogin;
+namespace MercySocial.Application.Users.Commands.CreateUserLogin;
 
 [UsedImplicitly]
-public class CreateLoginCommandValidator : AbstractValidator<CreateLoginCommand>
+public class CreateLoginCommandValidator : AbstractValidator<CreateUserLoginCommand>
 {
     public CreateLoginCommandValidator()
     {

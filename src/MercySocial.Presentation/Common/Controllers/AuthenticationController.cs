@@ -1,8 +1,10 @@
 using AutoMapper;
 using MediatR;
 using MercySocial.Application.Common.Authentication;
-using MercySocial.Application.Users.Commands.CreateLogin;
+using MercySocial.Application.Users.Commands.CreateRegisterUser;
+using MercySocial.Application.Users.Commands.CreateUserLogin;
 using MercySocial.Presentation.Users.Requests;
+using MercySocial.Presentation.Users.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MercySocial.Presentation.Common.Controllers;
@@ -25,23 +27,29 @@ public class AuthenticationController : ApiController
 
     [HttpPost]
     public async Task<IActionResult> LoginAsync(
-        [FromBody] CreateLoginRequest createLoginRequest, 
+        [FromBody] CreateUserLoginRequest createUserLoginRequest,
         CancellationToken cancellationToken)
     {
-        var mappedLoginUser = _mapper.Map<CreateLoginCommand>(createLoginRequest);
+        var mappedLoginUser = _mapper.Map<CreateUserLoginCommand>(createUserLoginRequest);
         var authenticationResult = await _mediator.Send(mappedLoginUser, cancellationToken);
         if (authenticationResult.IsError)
             return Problem(authenticationResult.Errors);
-        
+
         var token = _authenticationService.GenerateJwtToken(authenticationResult.Value.UserName);
-        
+
         return Ok(token);
     }
 
-    // [HttpPost("register")]
-    // public async Task<IActionResult> RegisterAsync([FromBody] RegisterUserDto registerUserDto)
-    // {
-    //     var mappedRegisterUserDto = _mapper.Map<RegisterUser>(registerUserDto);
-    //     var registerResult = await _userService.RegisterUserAsync(mappedRegisterUserDto);
-    // }
+    [HttpPost]
+    public async Task<IActionResult> RegisterAsync(
+        [FromBody] CreateUserRegisterRequest createUserRegisterRequest,
+        CancellationToken cancellationToken)
+    {
+        var registerCommand = _mapper.Map<CreateUserRegisterCommand>(createUserRegisterRequest);
+        var registerResult = await _mediator.Send(registerCommand, cancellationToken);
+        
+        return registerResult.Match(
+            result => Ok(_mapper.Map<UserResponse>(result)),
+            error => Problem(error));
+    }
 }

@@ -1,10 +1,10 @@
-using MediatR;
 using ErrorOr;
+using MediatR;
 using MercySocial.Domain.UserAggregate;
 
-namespace MercySocial.Application.Users.Commands.CreateLogin;
+namespace MercySocial.Application.Users.Commands.CreateUserLogin;
 
-public record CreateLoginCommand(
+public record CreateUserLoginCommand(
     string UserName,
     string Email,
     string PasswordHash) : IRequest<ErrorOr<User>>;
