@@ -7,8 +7,8 @@ namespace MercySocial.Infrastructure.Common.Repository;
 
 public abstract class EntityRepository<TModel, TId, TIdType> :
     IRepository<TModel, TId, TIdType>
-    where TModel : Entity<TId> 
-    where TId : AggregateRootId<TIdType>
+    where TModel : Entity<TId>
+    where TId : ValueObject
     where TIdType : struct
 {
     protected readonly ApplicationDbContext DbContext;
@@ -19,35 +19,47 @@ public abstract class EntityRepository<TModel, TId, TIdType> :
         DbContext = dbContext;
     }
 
-    public virtual Task<bool> ExistsBy(TModel entity) => Entities.ContainsAsync(entity);
+    public virtual Task<bool> ExistsBy(
+        TModel entity,
+        CancellationToken cancellationToken)
+        => Entities.ContainsAsync(entity, cancellationToken: cancellationToken);
 
-    public virtual async Task<TModel?> ExistsBy(TId id) => await Entities.FindAsync(id.Value);
+    public virtual async Task<bool> ExistsByIdAsync(
+        TId id,
+        CancellationToken cancellationToken) 
+        => await Entities.AnyAsync(e => e.Id == id, cancellationToken);
 
-    public virtual async Task<TModel?> GetByIdAsync(TId id)
+    public virtual async Task<TModel?> GetByIdAsync(
+        TId id,
+        CancellationToken cancellationToken) 
+        => await Entities.FindAsync([id, cancellationToken], cancellationToken);
+
+    public virtual async Task<TModel> AddAsync(
+        TModel entity,
+        CancellationToken cancellationToken)
     {
-        var entity = await Entities.FindAsync(id.Value);
-        if (entity is null)
-            throw new KeyNotFoundException();
-
-        return entity;
-    }
-
-    public virtual async Task<TModel> AddAsync(TModel entity)
-    {
-        var addedEntity = await Entities.AddAsync(entity);
-        await DbContext.SaveChangesAsync();
+        var addedEntity = await Entities.AddAsync(entity, cancellationToken);
+        await DbContext.SaveChangesAsync(cancellationToken);
         return addedEntity.Entity;
     }
 
-    public Task UpdateByIdAsync(TModel entity, TModel existingEntity)
+    public Task UpdateByIdAsync(
+        TModel entity,
+        TModel existingEntity,
+        CancellationToken cancellationToken)
     {
-        DbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
-        return DbContext.SaveChangesAsync();
+        DbContext
+            .Entry(existingEntity).CurrentValues
+            .SetValues(entity);
+        
+        return DbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public virtual Task DeleteAsync(TModel entity)
+    public virtual Task DeleteAsync(
+        TModel entity,
+        CancellationToken cancellationToken)
     {
         Entities.Remove(entity);
-        return DbContext.SaveChangesAsync();
+        return DbContext.SaveChangesAsync(cancellationToken);
     }
 }
