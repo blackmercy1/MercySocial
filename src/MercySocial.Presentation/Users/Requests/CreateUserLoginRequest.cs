@@ -3,4 +3,4 @@ namespace MercySocial.Presentation.Users.Requests;
 public record CreateUserLoginRequest(
     string UserName,
     string Email,
-    string PasswordHash);
+    string Password);

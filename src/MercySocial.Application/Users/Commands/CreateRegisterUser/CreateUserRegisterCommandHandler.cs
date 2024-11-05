@@ -1,6 +1,7 @@
 using ErrorOr;
 using JetBrains.Annotations;
 using MediatR;
+using MercySocial.Application.Common.Authentication.PasswordHasher;
 using MercySocial.Application.Users.Repository;
 using MercySocial.Domain.Common.Errors;
 using MercySocial.Domain.UserAggregate;
@@ -11,10 +12,14 @@ namespace MercySocial.Application.Users.Commands.CreateRegisterUser;
 public class CreateUserRegisterCommandHandler : IRequestHandler<CreateUserRegisterCommand, ErrorOr<User>>
 {
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHasherService _passwordHasher;
     
-    public CreateUserRegisterCommandHandler(IUserRepository userRepository)
+    public CreateUserRegisterCommandHandler(
+        IUserRepository userRepository,
+        IPasswordHasherService passwordHasher)
     {
         _userRepository = userRepository;
+        _passwordHasher = passwordHasher;
     }
     
     public async Task<ErrorOr<User>> Handle(
@@ -32,7 +37,7 @@ public class CreateUserRegisterCommandHandler : IRequestHandler<CreateUserRegist
             id: null,
             userName: request.UserName,
             email: request.Email,
-            passwordHash: request.PasswordHash,
+            passwordHash: _passwordHasher.HashPassword(request.Password),
             profileImageUrl: request.ProfileImageUrl,
             dateOfBirth: request.DateOfBirth,
             createdAt: request.CreatedAt,
@@ -41,7 +46,7 @@ public class CreateUserRegisterCommandHandler : IRequestHandler<CreateUserRegist
             isActive: request.IsActive
         );
 
-        await _userRepository.AddAsync(user);
+        await _userRepository.AddAsync(user, cancellationToken);
         
         return user;
     }

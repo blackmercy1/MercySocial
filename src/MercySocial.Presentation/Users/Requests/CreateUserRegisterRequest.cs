@@ -3,7 +3,7 @@ namespace MercySocial.Presentation.Users.Requests;
 public record CreateUserRegisterRequest(
     string UserName,
     string Email,
-    string PasswordHash,
+    string Password,
     string? ProfileImageUrl,
     DateTime? DateOfBirth,
     DateTime? CreatedAt,

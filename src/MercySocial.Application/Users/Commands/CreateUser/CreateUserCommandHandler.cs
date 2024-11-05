@@ -38,7 +38,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Error
             isActive: request.IsActive
         );
 
-        await _userRepository.AddAsync(user);
+        await _userRepository.AddAsync(user, cancellationToken);
         
         return user;
     }

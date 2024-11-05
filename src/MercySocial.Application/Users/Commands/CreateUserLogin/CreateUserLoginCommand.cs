@@ -7,4 +7,4 @@ namespace MercySocial.Application.Users.Commands.CreateUserLogin;
 public record CreateUserLoginCommand(
     string UserName,
     string Email,
-    string PasswordHash) : IRequest<ErrorOr<User>>;
+    string Password) : IRequest<ErrorOr<User>>;

@@ -10,6 +10,6 @@ public class CreateLoginCommandValidator : AbstractValidator<CreateUserLoginComm
     {
         RuleFor(cmd => cmd.UserName).NotEmpty().WithMessage("Username is required");
         RuleFor(cmd => cmd.Email).NotEmpty().WithMessage("Email is required");
-        RuleFor(cmd => cmd.PasswordHash).NotEmpty().WithMessage("Password is required");
+        RuleFor(cmd => cmd.Password).NotEmpty().WithMessage("Password is required");
     }
 }

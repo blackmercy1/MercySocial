@@ -17,7 +17,7 @@ public class CreateUserRegisterValidator : AbstractValidator<CreateUserRegisterC
             .EmailAddress().WithMessage("Invalid email format.")
             .MaximumLength(100).WithMessage("Email must not exceed 100 characters.");
 
-        RuleFor(x => x.PasswordHash)
+        RuleFor(x => x.Password)
             .NotEmpty().WithMessage("Password hash is required.");
 
         RuleFor(x => x.ProfileImageUrl)

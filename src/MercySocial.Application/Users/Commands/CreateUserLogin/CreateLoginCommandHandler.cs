@@ -1,6 +1,7 @@
 using ErrorOr;
 using JetBrains.Annotations;
 using MediatR;
+using MercySocial.Application.Common.Authentication.PasswordHasher;
 using MercySocial.Application.Users.Repository;
 using MercySocial.Domain.Common.Errors;
 using MercySocial.Domain.UserAggregate;
@@ -11,32 +12,26 @@ namespace MercySocial.Application.Users.Commands.CreateUserLogin;
 public class CreateLoginCommandHandler : IRequestHandler<CreateUserLoginCommand, ErrorOr<User>>
 {
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHasherService _passwordHasher;
 
-    public CreateLoginCommandHandler(IUserRepository userRepository)
+    public CreateLoginCommandHandler(
+        IUserRepository userRepository,
+        IPasswordHasherService passwordHasher)
     {
         _userRepository = userRepository;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<ErrorOr<User>> Handle(
         CreateUserLoginCommand request,
         CancellationToken cancellationToken)
     {
-        var userId = await _userRepository.GetIdByEmailAsync(
-            request.Email,
-            cancellationToken);
+        var user = await _userRepository.GetByEmailAsync(request.Email, cancellationToken);
 
-        if (userId is null)
-            return Errors.User.EntityWasNotFound;
-        
-        var user = User.Create(
-            id: userId,
-            userName: request.UserName,
-            email: request.Email,
-            passwordHash: request.PasswordHash,
-            isActive: true);
-        
-        await _userRepository.AddAsync(user, cancellationToken);
-        
-        return user;
+        return user is null
+            ? Errors.User.EntityWasNotFound
+            : !_passwordHasher.VerifyPassword(user.PasswordHash, request.Password)
+                ? Errors.Authentication.InvalidCredentials
+                : user;
     }
 }

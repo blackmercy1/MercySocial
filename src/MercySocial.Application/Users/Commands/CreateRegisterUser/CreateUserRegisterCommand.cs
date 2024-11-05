@@ -7,7 +7,7 @@ namespace MercySocial.Application.Users.Commands.CreateRegisterUser;
 public record CreateUserRegisterCommand(
     string UserName,
     string Email,
-    string PasswordHash,
+    string Password,
     string? ProfileImageUrl,
     DateTime? DateOfBirth,
     DateTime? CreatedAt,
