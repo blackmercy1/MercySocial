@@ -3,7 +3,7 @@ namespace MercySocial.Domain.Common;
 public abstract class Entity<TId> : 
     IEquatable<Entity<TId>>,
     IHasDomainEvents
-    where TId : notnull
+    where TId : ValueObject
 {
     private readonly List<IDomainEvent> _domainEvents = new();
     
