@@ -11,7 +11,7 @@ namespace MercySocial.Presentation.Common.Controllers;
 public abstract class EntityController<TModel, TDto, TId, TIdType> :
     ApiController,
     IController<TDto, TId>
-    where TModel : Entity<TId> 
+    where TModel : Entity<TId>
     where TId : AggregateRootId<TIdType>
     where TIdType : struct
 {
@@ -27,43 +27,48 @@ public abstract class EntityController<TModel, TDto, TId, TIdType> :
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddAsync([FromBody] TDto dto)
+    public async Task<IActionResult> AddAsync([FromBody] TDto dto, CancellationToken cancellationToken)
     {
         return await ProcessRequestAsync(dto, async _ =>
         {
             var entity = Mapper.Map<TModel>(dto);
-            var result = await Service.AddAsync(entity);
+            var result = await Service.AddAsync(entity, cancellationToken);
             return result;
         });
     }
 
     [HttpPut($"{{id:int}}")]
-    public async Task<IActionResult> UpdateById([FromRoute] TId tId, [FromBody] TDto dto)
+    public async Task<IActionResult> UpdateById(
+        [FromRoute] TId tId,
+        [FromBody] TDto dto,
+        CancellationToken cancellationToken)
     {
         return await ProcessRequestAsync(dto, async _ =>
         {
             var entity = Mapper.Map<TModel>(dto);
-            var result = await Service.UpdateByIdAsync(entity, tId);
+            var result = await Service.UpdateByIdAsync(entity, tId, cancellationToken);
             return result;
         });
     }
 
     [HttpGet($"{{id:int}}")]
-    public async Task<IActionResult> GetByIdAsync([FromRoute] TId tId)
+    public async Task<IActionResult> GetByIdAsync(
+        [FromRoute] TId tId,
+        CancellationToken cancellationToken)
     {
         return await ProcessRequestAsync(tId, async _ =>
         {
-            var result = await Service.GetByIdAsync(tId);
+            var result = await Service.GetByIdAsync(tId, cancellationToken);
             return result;
         });
     }
 
     [HttpDelete($"{{id:int}}")]
-    public async Task<IActionResult> DeleteByIdAsync(TId tId)
+    public async Task<IActionResult> DeleteByIdAsync(TId tId, CancellationToken cancellationToken)
     {
         return await ProcessRequestAsync(tId, async _ =>
         {
-            var result = await Service.DeleteByIdAsync(tId);
+            var result = await Service.DeleteByIdAsync(tId, cancellationToken);
             return result;
         });
     }
