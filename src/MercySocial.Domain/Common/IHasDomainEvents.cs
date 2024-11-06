@@ -1,4 +1,4 @@
-namespace MercySocial.Domain.common;
+namespace MercySocial.Domain.Common;
 
 public interface IHasDomainEvents
 {

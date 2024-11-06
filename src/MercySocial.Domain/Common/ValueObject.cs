@@ -1,4 +1,4 @@
-namespace MercySocial.Domain.common;
+namespace MercySocial.Domain.Common;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
@@ -9,7 +9,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
     public static bool operator !=(ValueObject left, ValueObject right) => Equals(left, right);
 
     public override int GetHashCode() => GetEqualityComponents()
-        .Select(x => x?.GetHashCode() ?? 0)
+        .Select(x => x.GetHashCode())
         .Aggregate((x, y) => x ^ y);
     
     public override bool Equals(object? obj)

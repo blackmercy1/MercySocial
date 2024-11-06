@@ -1,18 +1,17 @@
-using MercySocial.Domain.common;
+using MercySocial.Domain.Common;
 
 namespace MercySocial.Application.Common.Repository;
 
 public interface IRepository<TModel, in TId, in TIdType>
     where TModel : Entity<TId> 
-    where TId : AggregateRootId<TIdType>
+    where TId : ValueObject
     where TIdType : struct
 {
-    Task<TModel?> GetByIdAsync(TId id);
-    Task<bool> ExistsBy(TModel entity);
+    Task<TModel?> GetByIdAsync(TId id, CancellationToken cancellationToken);
+    Task<bool> ExistsBy(TModel entity, CancellationToken cancellationToken);
     
-    Task<TModel> AddAsync(TModel entity);
-    Task UpdateByIdAsync(TModel entity, TModel existingEntity);
-    Task UpdateAsync(TModel entity);
+    Task<TModel> AddAsync(TModel entity, CancellationToken cancellationToken);
+    Task UpdateByIdAsync(TModel entity, TModel existingEntity, CancellationToken cancellationToken);
     
-    Task DeleteAsync(TModel entity);
+    Task DeleteAsync(TModel entity, CancellationToken cancellationToken);
 }

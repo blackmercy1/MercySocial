@@ -1,9 +1,9 @@
-namespace MercySocial.Domain.common;
+namespace MercySocial.Domain.Common;
 
 public abstract class Entity<TId> : 
     IEquatable<Entity<TId>>,
     IHasDomainEvents
-    where TId : notnull
+    where TId : ValueObject
 {
     private readonly List<IDomainEvent> _domainEvents = new();
     
@@ -33,8 +33,6 @@ public abstract class Entity<TId> :
         _domainEvents.Clear();
     }
     
-    public static bool operator ==(Entity<TId> left, Entity<TId> right) => Equals(left, right);
-    public static bool operator !=(Entity<TId> left, Entity<TId> right) => Equals(left, right);
     public bool Equals(Entity<TId>? other) => Equals((object?) other);
     public override int GetHashCode() => Id.GetHashCode();
 

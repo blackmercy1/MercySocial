@@ -1,7 +1,7 @@
-namespace MercySocial.Domain.common;
+namespace MercySocial.Domain.Common;
 
 public class AggregateRoot<TId> : Entity<TId>
-    where TId : notnull
+    where TId : ValueObject
 {
     protected AggregateRoot(TId id) : base(id) { }
 

@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace MercySocial.Presentation.Common.Controllers;
 
+[Authorize]
 [ApiController]
+[Route("api/[controller]/[action]")]
 public abstract class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
