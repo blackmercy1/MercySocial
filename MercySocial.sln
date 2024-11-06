@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercySocial.Presentation", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercySocial.Infrastructure", "src\MercySocial.Infrastructure\MercySocial.Infrastructure.csproj", "{5B435640-EE3D-42C8-B46B-FDAD6CF96146}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercySocial.PresentationTests", "tests\MercySocial.PresentationTests\MercySocial.PresentationTests.csproj", "{AC4E8E60-017B-4C10-82AA-5B4F30B2AEF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercySocial.ApplicationTests", "tests\MercySocial.ApplicationTests\MercySocial.ApplicationTests.csproj", "{3C2C1E23-914A-4821-9B52-E8FB73FD19C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercySocial.DomainTests", "tests\MercySocial.DomainTests\MercySocial.DomainTests.csproj", "{69558BC6-BCEB-4D20-A838-77D6A7E7ED87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercySocial.InfrastructureTests", "tests\MercySocial.InfrastructureTests\MercySocial.InfrastructureTests.csproj", "{EF59D65A-1791-4A23-A61D-81C912D0660C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +46,22 @@ Global
 		{5B435640-EE3D-42C8-B46B-FDAD6CF96146}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B435640-EE3D-42C8-B46B-FDAD6CF96146}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B435640-EE3D-42C8-B46B-FDAD6CF96146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC4E8E60-017B-4C10-82AA-5B4F30B2AEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC4E8E60-017B-4C10-82AA-5B4F30B2AEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC4E8E60-017B-4C10-82AA-5B4F30B2AEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC4E8E60-017B-4C10-82AA-5B4F30B2AEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2C1E23-914A-4821-9B52-E8FB73FD19C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2C1E23-914A-4821-9B52-E8FB73FD19C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2C1E23-914A-4821-9B52-E8FB73FD19C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2C1E23-914A-4821-9B52-E8FB73FD19C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69558BC6-BCEB-4D20-A838-77D6A7E7ED87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69558BC6-BCEB-4D20-A838-77D6A7E7ED87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69558BC6-BCEB-4D20-A838-77D6A7E7ED87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69558BC6-BCEB-4D20-A838-77D6A7E7ED87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF59D65A-1791-4A23-A61D-81C912D0660C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF59D65A-1791-4A23-A61D-81C912D0660C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF59D65A-1791-4A23-A61D-81C912D0660C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF59D65A-1791-4A23-A61D-81C912D0660C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AE259B56-5CF2-4663-8F98-836AFBB1B2DB} = {3F42D017-3253-464A-A555-4278B32F0C5E}
