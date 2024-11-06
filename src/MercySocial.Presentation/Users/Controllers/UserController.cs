@@ -28,7 +28,7 @@ public class UserController : ApiController
         var createUserResult = await _mediator.Send(createUserCommand, cancellationToken);
         
         return createUserResult.Match(
-            result => Ok(_mapper.Map<UserResponse>(result)),
+            result => Ok(_mapper.Map<RegisterResponse>(result)),
             error => Problem(error));
     }
 }

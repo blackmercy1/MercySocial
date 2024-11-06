@@ -1,30 +1,29 @@
+using MercySocial.Domain.UserAggregate;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace MercySocial.Application.Common.Authentication;
+namespace MercySocial.Application.Common.Authentication.JwtTokenGenerator;
 
-public class AuthenticationService : IAuthenticationService
+public class JwtTokenGenerator : IJwtTokenGenerator
 {
     private readonly IConfiguration _configuration;
 
-    public AuthenticationService(IConfiguration configuration)
+    public JwtTokenGenerator(IConfiguration configuration)
     {
         _configuration = configuration;
     }
 
-    public string GenerateJwtToken(
-        string userName)
+    public string GenerateJwtToken(User user)
     {
         var jwtSettings = _configuration.GetSection("JwtSettings");
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, userName),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Email, user.Email)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
@@ -40,9 +39,4 @@ public class AuthenticationService : IAuthenticationService
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
-}
-
-public interface IAuthenticationService
-{
-    string GenerateJwtToken(string userName);
 }

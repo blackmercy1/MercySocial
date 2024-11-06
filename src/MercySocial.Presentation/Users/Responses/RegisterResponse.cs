@@ -1,6 +1,6 @@
 namespace MercySocial.Presentation.Users.Responses;
 
-public record UserResponse(
+public record RegisterResponse(
     string UserName,
     string Email,
     string PasswordHash,

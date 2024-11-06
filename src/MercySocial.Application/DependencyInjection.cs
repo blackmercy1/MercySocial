@@ -3,7 +3,7 @@ using MercySocial.Application.Common.Authentication.PasswordHasher;
 using MercySocial.Application.Common.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
-using MercySocial.Application.Common.Authentication;
+using MercySocial.Application.Common.Authentication.JwtTokenGenerator;
 using System.Reflection;
 
 namespace MercySocial.Application;
@@ -14,7 +14,7 @@ public static class DependencyInjection
     {
         services
             .AddScoped<IPasswordHasherService, PasswordHasherService>()
-            .AddScoped<IAuthenticationService, AuthenticationService>();
+            .AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
         services
             .AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection)));

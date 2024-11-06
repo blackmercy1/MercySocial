@@ -1,12 +1,12 @@
 using FluentValidation;
 using JetBrains.Annotations;
 
-namespace MercySocial.Application.Users.Commands.CreateUserLogin;
+namespace MercySocial.Application.Users.Queries.UserLogin.Queries;
 
 [UsedImplicitly]
-public class CreateLoginCommandValidator : AbstractValidator<CreateUserLoginCommand>
+public class UserLoginQueryValidator : AbstractValidator<UserLoginQuery>
 {
-    public CreateLoginCommandValidator()
+    public UserLoginQueryValidator()
     {
         RuleFor(cmd => cmd.UserName).NotEmpty().WithMessage("Username is required");
         RuleFor(cmd => cmd.Email).NotEmpty().WithMessage("Email is required");
