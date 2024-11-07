@@ -29,6 +29,7 @@ public class CreateUserRegisterCommandHandlerUserAlreadyExists : IRequestHandler
         var existingUser = await _userRepository.GetIdByEmailAsync(
             request.Email,
             cancellationToken);
+        
 
         if (existingUser is not null)
             return Errors.User.EntityExists;
