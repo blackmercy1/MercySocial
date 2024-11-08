@@ -9,4 +9,5 @@ global using Xunit;
 global using MercySocial.Domain.UserAggregate;
 global using FluentValidation.TestHelper;
 global using MercySocial.Application.Users.Queries.UserLogin.Queries;
-using MercySocial.Application.Common.Authentication.JwtTokenGenerator;
+global using Microsoft.Extensions.Configuration;
+global using System.IdentityModel.Tokens.Jwt;
