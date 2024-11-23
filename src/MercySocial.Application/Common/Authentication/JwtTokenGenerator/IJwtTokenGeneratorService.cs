@@ -2,7 +2,7 @@ using MercySocial.Domain.UserAggregate;
 
 namespace MercySocial.Application.Common.Authentication.JwtTokenGenerator;
 
-public interface IJwtTokenGenerator
+public interface IJwtTokenGeneratorService
 {
     string GenerateJwtToken(User user);
 }
