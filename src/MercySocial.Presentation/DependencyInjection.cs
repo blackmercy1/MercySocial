@@ -26,15 +26,15 @@ public static class DependencyInjection
 
         services
             .AddEndpointsApiExplorer()
-            .AddProblemDetails();
+            .AddProblemDetails()
+            .AddRazorPages();
 
-        AddAuthentication(services, jwtSettings);
+        ConfigureAuthentication(services, jwtSettings);
     }
 
-    private static void AddAuthentication(IServiceCollection services, IConfigurationSection jwtSettings)
+    private static void ConfigureAuthentication(IServiceCollection services, IConfigurationSection jwtSettings)
     {
-        services
-            .AddAuthentication(options =>
+        services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -51,6 +51,16 @@ public static class DependencyInjection
                     ValidAudience = jwtSettings["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])),
                     ClockSkew = TimeSpan.Zero
+                };
+                
+                options.Events = new()
+                {
+                    OnMessageReceived = context =>
+                    {
+                        if (context.Request.Cookies.ContainsKey("jwt_token")) 
+                            context.Token = context.Request.Cookies["jwt_token"];
+                        return Task.CompletedTask;
+                    }
                 };
             });
     }

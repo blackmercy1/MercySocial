@@ -4,7 +4,7 @@ public class CreateUserRegisterCommandHandlerTests
 {
     private readonly Mock<IUserRepository> _userRepositoryMock;
     private readonly Mock<IPasswordHasherService> _passwordHasherMock;
-    private readonly CreateUserRegisterCommandHandlerUserAlreadyExists _handler;
+    private readonly CreateUserRegisterCommandHandler _handler;
 
     public CreateUserRegisterCommandHandlerTests()
     {

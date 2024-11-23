@@ -1,0 +1,21 @@
+@page
+@model MercySocial.Presentation.Pages.Auth.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<h2>Register</h2>
+
+<form method="post">
+    <label for="Email">Email:</label>
+    <input type="text" id="email" name="Email" asp-for="Email" />
+
+    <label for="Password">Password:</label>
+    <input type="password" id="password" name="Password" asp-for="Password" />
+    
+    <button type="submit">Register</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p>@Model.ErrorMessage</p>
+}

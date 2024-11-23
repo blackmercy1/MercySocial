@@ -1,0 +1,58 @@
+@page
+@model MercySocial.Presentation.Pages.IndexModel
+@{
+ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <h1>Welcome to Social Network</h1>
+
+    <!-- Создание нового поста -->
+    <div class="new-post mb-4">
+        <h3>Create a New Post</h3>
+        <form method="post" asp-page-handler="CreatePost">
+            <textarea name="Content" rows="3" class="form-control" placeholder="What's on your mind?"></textarea>
+            <button type="submit" class="btn btn-primary mt-2">Post</button>
+        </form>
+    </div>
+
+    <!-- Лента новостей -->
+    <div class="feed">
+        <h3>Recent Posts</h3>
+        @foreach (var post in Model.Posts)
+        {
+        <div class="post mb-4 p-3 border rounded">
+            <div class="d-flex align-items-center mb-2">
+                <img src="@post.UserProfileImageUrl" alt="User" class="rounded-circle mr-2" style="width: 40px; height: 40px;">
+                <div>
+                    <h5 class="mb-0">@post.UserName</h5>
+                    <small class="text-muted">@post.CreatedAt.ToString("g")</small>
+                </div>
+            </div>
+            <p>@post.Content</p>
+
+            <div class="actions mt-2">
+                <button class="btn btn-sm btn-outline-primary">Like (@post.LikesCount)</button>
+                <button class="btn btn-sm btn-outline-secondary">Comment</button>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Рекомендации друзей -->
+    <div class="friends-suggestions mt-4">
+        <h3>People You May Know</h3>
+        <ul class="list-unstyled">
+            @foreach (var friend in Model.SuggestedFriends)
+            {
+            <li class="d-flex align-items-center mb-2">
+                <img src="@friend.ProfileImageUrl" alt="Friend" class="rounded-circle mr-2" style="width: 30px; height: 30px;">
+                <div>
+                    <h6 class="mb-0">@friend.UserName</h6>
+                    <button class="btn btn-sm btn-outline-success ml-2">Add Friend</button>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+</div>

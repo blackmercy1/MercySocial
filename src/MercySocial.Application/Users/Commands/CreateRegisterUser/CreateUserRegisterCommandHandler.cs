@@ -9,12 +9,12 @@ using MercySocial.Domain.UserAggregate;
 namespace MercySocial.Application.Users.Commands.CreateRegisterUser;
 
 [UsedImplicitly]
-public class CreateUserRegisterCommandHandlerUserAlreadyExists : IRequestHandler<CreateUserRegisterCommand, ErrorOr<User>>
+public class CreateUserRegisterCommandHandler : IRequestHandler<CreateUserRegisterCommand, ErrorOr<User>>
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasherService _passwordHasher;
     
-    public CreateUserRegisterCommandHandlerUserAlreadyExists(
+    public CreateUserRegisterCommandHandler(
         IUserRepository userRepository,
         IPasswordHasherService passwordHasher)
     {
@@ -30,7 +30,6 @@ public class CreateUserRegisterCommandHandlerUserAlreadyExists : IRequestHandler
             request.Email,
             cancellationToken);
         
-
         if (existingUser is not null)
             return Errors.User.EntityExists;
 

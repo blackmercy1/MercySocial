@@ -2,6 +2,7 @@ using ErrorOr;
 using JetBrains.Annotations;
 using MediatR;
 using MercySocial.Application.Common.Authentication;
+using MercySocial.Application.Common.Authentication.Cookie;
 using MercySocial.Application.Common.Authentication.JwtTokenGenerator;
 using MercySocial.Application.Common.Authentication.PasswordHasher;
 using MercySocial.Application.Users.Repository;
@@ -14,16 +15,17 @@ public class UserLoginQueryHandler : IRequestHandler<UserLoginQuery, ErrorOr<Aut
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordHasherService _passwordHasher;
-    private readonly IJwtTokenGenerator _jwtTokenGenerator;
+    private readonly IJwtTokenGeneratorService _jwtTokenGeneratorService;
 
     public UserLoginQueryHandler(
         IUserRepository userRepository,
         IPasswordHasherService passwordHasher,
-        IJwtTokenGenerator jwtTokenGenerator)
+        IJwtTokenGeneratorService jwtTokenGeneratorService,
+        ICookieService cookieService)
     {
         _userRepository = userRepository;
         _passwordHasher = passwordHasher;
-        _jwtTokenGenerator = jwtTokenGenerator;
+        _jwtTokenGeneratorService = jwtTokenGeneratorService;
     }
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(
@@ -38,7 +40,7 @@ public class UserLoginQueryHandler : IRequestHandler<UserLoginQuery, ErrorOr<Aut
         if (!_passwordHasher.VerifyPassword(user.PasswordHash, request.Password))
             return Errors.Authentication.InvalidCredentials;
 
-        var token = _jwtTokenGenerator.GenerateJwtToken(user);
+        var token = _jwtTokenGeneratorService.GenerateJwtToken(user);
         
         return new AuthenticationResult(
             user,

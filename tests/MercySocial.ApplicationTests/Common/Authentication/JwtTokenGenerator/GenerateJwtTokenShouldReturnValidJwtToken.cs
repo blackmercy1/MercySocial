@@ -25,7 +25,7 @@ public class GenerateJwtTokenShouldReturnValidJwtToken
             .AddInMemoryCollection(inMemorySettings!)
             .Build();
 
-        var jwtTokenGenerator = new Application.Common.Authentication.JwtTokenGenerator.JwtTokenGenerator(configuration);
+        var jwtTokenGenerator = new Application.Common.Authentication.JwtTokenGenerator.JwtTokenGeneratorService(configuration);
         
         var token = jwtTokenGenerator.GenerateJwtToken(user);
         

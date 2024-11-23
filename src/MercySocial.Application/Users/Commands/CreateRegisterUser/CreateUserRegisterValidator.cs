@@ -25,11 +25,20 @@ public class CreateUserRegisterValidator : AbstractValidator<CreateUserRegisterC
             .When(x => !string.IsNullOrEmpty(x.ProfileImageUrl));
 
         RuleFor(x => x.DateOfBirth)
-            .NotEmpty().WithMessage("Date of birth is required.")
-            .LessThan(DateTime.UtcNow).WithMessage("Date of birth must be in the past.");
+            .LessThan(DateTime.UtcNow).WithMessage("Date of birth must be in the past.")
+            .When(x => x.DateOfBirth.HasValue);
+
+        RuleFor(x => x.CreatedAt)
+            .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("CreatedAt must be in the past or present.")
+            .When(x => x.CreatedAt.HasValue);
+
+        RuleFor(x => x.LastLogin)
+            .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("Last login must be in the past or present.")
+            .When(x => x.LastLogin.HasValue);
 
         RuleFor(x => x.Bio)
-            .MaximumLength(500).WithMessage("Bio must not exceed 500 characters.");
+            .MaximumLength(500).WithMessage("Bio must not exceed 500 characters.")
+            .When(x => !string.IsNullOrEmpty(x.Bio));
 
         RuleFor(x => x.IsActive)
             .NotNull().WithMessage("IsActive status is required.");

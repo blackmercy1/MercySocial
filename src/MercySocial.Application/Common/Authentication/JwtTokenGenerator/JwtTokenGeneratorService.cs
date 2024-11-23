@@ -7,11 +7,11 @@ using System.Text;
 
 namespace MercySocial.Application.Common.Authentication.JwtTokenGenerator;
 
-public class JwtTokenGenerator : IJwtTokenGenerator
+public class JwtTokenGeneratorService : IJwtTokenGeneratorService
 {
     private readonly IConfiguration _configuration;
 
-    public JwtTokenGenerator(IConfiguration configuration)
+    public JwtTokenGeneratorService(IConfiguration configuration)
     {
         _configuration = configuration;
     }
