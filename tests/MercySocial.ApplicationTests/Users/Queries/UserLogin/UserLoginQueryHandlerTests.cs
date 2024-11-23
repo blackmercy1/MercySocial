@@ -1,3 +1,4 @@
+using MercySocial.Application.Common.Authentication.Cookie;
 using MercySocial.Application.Common.Authentication.JwtTokenGenerator;
 
 namespace MercySocial.ApplicationTests.Users.Queries.UserLogin;
@@ -6,18 +7,23 @@ public class UserLoginQueryHandlerTests
 {
     private readonly Mock<IUserRepository> _userRepositoryMock;
     private readonly Mock<IPasswordHasherService> _passwordHasherMock;
-    private readonly Mock<IJwtTokenGenerator> _jwtTokenGeneratorMock;
+    private readonly Mock<IJwtTokenGeneratorService> _jwtTokenGeneratorMock;
+    private readonly Mock<ICookieService> _cookieServiceMock;
     private readonly UserLoginQueryHandler _handler;
 
     public UserLoginQueryHandlerTests()
     {
         _userRepositoryMock = new();
         _passwordHasherMock = new();
+        
         _jwtTokenGeneratorMock = new();
+        _cookieServiceMock = new Mock<ICookieService>();
+        
         _handler = new(
             _userRepositoryMock.Object,
             _passwordHasherMock.Object,
-            _jwtTokenGeneratorMock.Object);
+            _jwtTokenGeneratorMock.Object,
+            _cookieServiceMock.Object);
     }
 
     [Fact]
