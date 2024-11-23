@@ -1,0 +1,13 @@
+@page
+@model MercySocial.Presentation.Pages.Auth.LoginModel
+<form method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="Email" asp-for="Email" />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="Password" asp-for="Password" />
+
+    <button type="submit">Login</button>
+</form>
+
+<p>@Model.ErrorMessage</p>

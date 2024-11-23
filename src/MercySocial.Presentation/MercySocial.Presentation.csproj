@@ -24,4 +24,8 @@
       <ProjectReference Include="..\MercySocial.Infrastructure\MercySocial.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\css\" />
+    </ItemGroup>
+
 </Project>
