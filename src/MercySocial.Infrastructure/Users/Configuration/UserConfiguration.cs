@@ -46,8 +46,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasMaxLength(255);
 
         builder
-            .Property(u => u.DateOfBirth)
-            .IsRequired();
+            .Property(u => u.DateOfBirth);
 
         builder
             .Property(u => u.CreatedAt)
