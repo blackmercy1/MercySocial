@@ -1,9 +1,9 @@
-using System.Text.Json.Serialization;
 using MercySocial.Presentation.Middlewares;
 using MercySocial.Presentation.Users.Mapping;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System.Text;
 
 namespace MercySocial.Presentation;
@@ -18,23 +18,45 @@ public static class DependencyInjection
 
         services
             .AddControllers()
-            .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve; });
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
+            });
 
-        ConfigureServices(services);
-        ConfigureAutoMapper(services);
-        ConfigureSwaggerGen(services);
+        AddCors(services);
+        AddServices(services);
+        AddAutoMapper(services);
+        AddSwaggerGen(services);
 
         services
             .AddEndpointsApiExplorer()
             .AddProblemDetails()
             .AddRazorPages();
 
-        ConfigureAuthentication(services, jwtSettings);
+        AddAuthentication(services, jwtSettings);
     }
 
-    private static void ConfigureAuthentication(IServiceCollection services, IConfigurationSection jwtSettings)
+    private static void AddCors(
+        IServiceCollection services)
     {
-        services.AddAuthentication(options =>
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
+    }
+
+    private static void AddAuthentication(
+        IServiceCollection services,
+        IConfigurationSection jwtSettings)
+    {
+        services
+            .AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -52,12 +74,12 @@ public static class DependencyInjection
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"])),
                     ClockSkew = TimeSpan.Zero
                 };
-                
+
                 options.Events = new()
                 {
                     OnMessageReceived = context =>
                     {
-                        if (context.Request.Cookies.ContainsKey("jwt_token")) 
+                        if (context.Request.Cookies.ContainsKey("jwt_token"))
                             context.Token = context.Request.Cookies["jwt_token"];
                         return Task.CompletedTask;
                     }
@@ -65,7 +87,8 @@ public static class DependencyInjection
             });
     }
 
-    private static void ConfigureSwaggerGen(IServiceCollection services)
+    private static void AddSwaggerGen(
+        IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
         {
@@ -97,9 +120,11 @@ public static class DependencyInjection
         });
     }
 
-    private static void ConfigureServices(IServiceCollection services)
+    private static void AddServices(
+        IServiceCollection services)
         => services.AddScoped<ErrorHandlerMiddleware>();
 
-    private static void ConfigureAutoMapper(IServiceCollection services)
+    private static void AddAutoMapper(
+        IServiceCollection services)
         => services.AddAutoMapper(typeof(UserMappingProfile));
 }
