@@ -3,6 +3,7 @@
 - [[IPv6]]
 
 [[Локальная сеть IP]]
+[[Подсети]]
 [[NAT]]
 
 **Типы IP адресов по охвату** :  
@@ -15,5 +16,6 @@
 
 **Различные виды IP адресов ** : 
 - [[Default Gateway]]
-
+- [[Loopback Adress]]
+- [[Broadcast IP address]]
 

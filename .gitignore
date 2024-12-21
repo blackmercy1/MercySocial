@@ -1,0 +1,8 @@
+# Obsidian-specific folders and files
+.obsidian/  # Содержит настройки и плагины Obsidian, которые часто меняются
+.trash/     # Корзина Obsidian, временные файлы
+workspace   # Позиции и размеры окон Obsidian
+
+# Если есть временные или служебные файлы в вашей базе
+*.md~
+*.bak

@@ -4,143 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "403d1b9ee954eb0d",
+        "id": "c1d0275477660eee",
         "type": "tabs",
         "children": [
           {
-            "id": "7ebad6ad569565d6",
+            "id": "9f2426705160d651",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IP-adresses.md",
+                "file": "Сети/Расчёт контрольной суммы.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "eede63216df1bfee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Default Gateway.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "33851522aa6b1b96",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Gateway.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ff8c6bb5d29db02c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Default Gateway.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "92fdd12695b1313e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "NAT.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "263f72fe9d0d7d82",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Локальная сеть IP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b713109a01429f52",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IPv4.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "501479619382c095",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Локальная сеть IP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "da7b2340130f55a2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IPv6.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7a212ea45fbb5bac",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IPv4.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8da3ff99c6f4afe7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Динамический IP адрес.md",
-                "mode": "source",
-                "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Расчёт контрольной суммы"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -160,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -175,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -183,15 +68,16 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "981ab20591b6b062",
@@ -207,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Default Gateway.md",
+                "file": "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/Статический полиморфизм.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -215,7 +101,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Статический полиморфизм"
             }
           },
           {
@@ -224,10 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Default Gateway.md",
+                "file": "Динамический полиморфизм.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Динамический полиморфизм"
             }
           },
           {
@@ -238,7 +128,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -247,8 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Default Gateway.md"
-              }
+                "file": "Динамический полиморфизм.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Динамический полиморфизм"
             }
           }
         ]
@@ -268,44 +162,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ff8c6bb5d29db02c",
+  "active": "9f2426705160d651",
   "lastOpenFiles": [
-    "Gateway.md",
-    "Default Gateway.md",
-    "IP-adresses.md",
-    "NAT.md",
-    "Локальная сеть IP.md",
-    "Частные IP адреса.md",
-    "IPv4.md",
-    "IPv6.md",
-    "Динамический IP адрес.md",
-    "Глобальные IP адреса.md",
-    "Программирование/Программирование.md",
-    "Сети.md",
-    "Статический IP адрес.md",
-    "Программирование/Графика/Графика.md",
-    "Программирование/Графика",
-    "Программирование/Data base/Основные операции с базами данных CRUD.md",
+    "Сети/TCP IP.md",
+    "Сети/IP-адрес.md",
+    "Программирование/CLR via CSharp Link Edition.md",
+    "Динамический полиморфизм.md",
+    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/Статический полиморфизм.md",
+    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/ad-hoc полиморфизм.md",
+    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Полиморфизм.md",
+    "Программирование/Подходы/ООП/Парадигмы ООП/Полиморфизм/Виды полиморфизма/Полиморфизм подтипов.md",
+    "Generics.md",
+    "GC.md",
+    "Untitled.canvas",
+    "Generic.md",
+    "Программирование/Книги/Названия книг/CLR via С♯ Jeffrey Richter/CLR via С♯ Jeffrey Richter.md",
+    "Как видеокарта обрабатывает изображение.md",
+    "Видео драйвер.md",
+    "ИЖГТУ/Программирование/Лекция один программирование.md",
     "CLR.md",
-    "Программирование/C++/C++.md",
-    "Программирование/Брокеры сообщений/RabbitMQ/RabbitMQ.md",
-    "Программирование/Брокеры сообщений/RabbitMQ/Подключение и каналы.md",
-    "Программирование/Брокеры сообщений/RabbitMQ/Exchange/Exchange.md",
-    "Программирование/DDD/Domain Driven Design.md",
+    "Программирование/Архитектура/Чистая архектура/API.md",
+    "Алгоритмическая структура ветвления.md",
+    "ИЖГТУ/Программирование/Линейный программы.md",
+    "Сети/Частные IP адреса.md",
+    "Сети/Физический интерфейс.md",
+    "Сети/Таблица маршрутизации хоста.md",
+    "Сети/Статический IP адрес.md",
+    "Сети/Сети.md",
+    "Сети/Сетевой фрейм.md",
+    "Сети/Сетевой интерфейс.md",
+    "Сети",
+    "Сет",
+    "untitled folder",
+    "ИЖГТУ/Программирование",
+    "ИЖГТУ/untitled folder",
+    "ИЖГТУ",
+    "Как работает сеть, построенная на базе TCP",
+    "Cache/Pasted image 20241003135248.png",
+    "Программирование/Графика",
     "Программирование/DDD",
-    "Линейная алгебра/Вектор/Вектор.md",
-    "Обучение/Обучение.md",
-    "Программирование/C++/Виды объектов/Динамические/Динамические объекты/Динамические объекты.md",
-    "Программирование/C++/Виды объектов/Динамические/Динамические массивы/Динамические массивы.md",
-    "Программирование/DDD/Event Sourcing.md",
     "Программирование/C++/Pointers/Smart-pointers",
-    "Программирование/C++/Виды объектов/Динамические",
-    "Программирование/C++/Виды объектов/Глобальные",
-    "Программирование/C++/Динамическая память",
-    "Программирование/C++/Виды объектов/Динамические/Динамические массивы",
-    "Программирование/C++/Виды объектов/Глобальные/Глобальные объекты",
-    "Программирование/C++/Виды объектов",
-    "Программирование/C++/Виды объектов/Динамические/Динамические объекты",
     "Программирование/CSharp Architecture.canvas",
     "Cache/Screenshot 2024-06-10 at 20.09.11.png",
     "Cache/Pasted image 20240602055037.png",
@@ -316,8 +212,6 @@
     "Cache/Pasted image 20240519224441.png",
     "Cache/Pasted image 20240519221904.png",
     "Cache/Pasted image 20240515142143.png",
-    "Cache/Screenshot 2024-05-15 at 14.21.08.png",
-    "Untitled.canvas",
     "Программирование/С#/Оптимизации/Untitled.canvas",
     "Untitled 2.canvas",
     "Untitled 1.canvas",

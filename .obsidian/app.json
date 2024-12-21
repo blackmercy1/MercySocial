@@ -1,5 +1,7 @@
 {
   "promptDelete": false,
   "attachmentFolderPath": "Cache",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "showLineNumber": false,
+  "readableLineLength": true
 }
