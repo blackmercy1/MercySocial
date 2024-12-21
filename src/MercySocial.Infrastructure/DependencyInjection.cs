@@ -1,5 +1,7 @@
+using MercySocial.Application.Messages.Repository;
 using MercySocial.Application.Users.Repository;
 using MercySocial.Infrastructure.Data;
+using MercySocial.Infrastructure.Messages.Repository;
 using MercySocial.Infrastructure.Users.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,7 @@ public static class DependencyInjection
             => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IMessageRepository, MessageRepository>();
         
         return services;
     }
