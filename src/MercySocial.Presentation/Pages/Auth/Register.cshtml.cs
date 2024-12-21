@@ -23,7 +23,7 @@ public class RegisterModel : PageModel
 
         using var client = new HttpClient();
         var content = new StringContent(JsonSerializer.Serialize(registerRequest), Encoding.UTF8, "application/json");
-        var response = await client.PostAsync("http://localhost:5155/api/authentication/register", content);
+        var response = await client.PostAsync("https://localhost:7181/api/authentication/register", content);
 
         if (!response.IsSuccessStatusCode)
         {
