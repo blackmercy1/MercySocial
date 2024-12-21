@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 namespace MercySocial.Infrastructure.Common.Repository;
 
 public abstract class EntityRepository<TModel, TId, TIdType> :
-    IRepository<TModel, TId, TIdType>
+    IRepository<TModel, TId>
     where TModel : Entity<TId>
-    where TId : ValueObject
+    where TId : AggregateRootId<TIdType>
     where TIdType : struct
 {
     protected readonly ApplicationDbContext DbContext;
@@ -19,7 +19,7 @@ public abstract class EntityRepository<TModel, TId, TIdType> :
         DbContext = dbContext;
     }
 
-    public virtual Task<bool> ExistsBy(
+    public virtual Task<bool> ExistsByAsync(
         TModel entity,
         CancellationToken cancellationToken)
         => Entities.ContainsAsync(entity, cancellationToken: cancellationToken);

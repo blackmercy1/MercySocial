@@ -14,5 +14,5 @@ public class UserId : AggregateRootId<Guid>
     }
 
     public static UserId Create(Guid value) => new(value);
-    public static UserId CreateUniqueUserId() => new(System.Guid.NewGuid());
+    public static UserId CreateUniqueUserId() => new(Guid.NewGuid());
 }
